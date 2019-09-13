@@ -15,7 +15,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "mongoose": "^5.7.1",
-    "morgan": "~1.9.1"
+    "morgan": "^1.9.1"
   },
   "description": "- News scraper web app that utilizes Mongoose and Cheerio to compile news from other sites and allows users to view and leave comments on the latest news.",
   "main": "app.js",
