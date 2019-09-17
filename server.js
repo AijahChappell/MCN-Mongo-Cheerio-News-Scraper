@@ -1,4 +1,4 @@
-// const createError = require("http-errors");
+//const createError = require("http-errors");
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
@@ -6,12 +6,14 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const axios = require("axios");
 const eHandle = require("express-handlebars");
-
+const cheerio = require("cheerio")
 const db = require("./models");
 
 const PORT = process.env.PORT || 3000;
 
 const app = express();
+
+require("./routes/routes.js")(app);
 
 // const indexRouter = require("./routes/index");
 // const usersRouter = require("./routes/users");
@@ -21,10 +23,11 @@ const app = express();
 // app.set('view engine', 'jade');
 
 app.use(logger("dev"));
-app.use(express.json());
+
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 // app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static("public"));
 
 app.engine("handlebars", eHandle({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
@@ -34,6 +37,7 @@ mongoose.connect(
   "mongodb://localhost/news_scraper",
   { useNewUrlParser: true }
 );
+
 
 
 app.listen(PORT, () => {
