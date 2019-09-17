@@ -1,5 +1,8 @@
-extends layout
+<a href="/">Home</a> |
+<a href="/saved">Saved articles</a>
+<button class="scrape">Scrape New Articles</button>
 
-block content
-  h1= title
-  p Welcome to #{title}
+{{#each article}}
+<p>{{this.title}}</p>
+<p>{{this.link}}</p>
+{{/each}}
